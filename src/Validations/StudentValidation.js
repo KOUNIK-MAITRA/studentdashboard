@@ -1,4 +1,4 @@
-import { object, string, number } from 'yup';
+import { object, string, array, number } from 'yup';
 
 
 
@@ -29,8 +29,14 @@ export const studentSchema = object().shape({
         .positive('roll number cannot be less than 1')
         .integer(),
 
-    cgpa: number()
-        .positive('CGPA must be greater than 0')
-        .max(9.999, 'CGPA must be less than 10')
-        .required('Please eneter your CGPA'),
+    education: array(object({
+        institution: string().min(2, 'enter a valid institution name'),
+        degree: string().min(2)
+    })).min(1, 'minimum one educational qualification is required').max(4, 'enter only your latest 4 educational qualifications at max'),
+
+    workExperience: array(object({
+        comapny: string().min(2, 'enter a valid company name'),
+        role: string().min(2, 'enter a valid role')
+    })).max(4, 'mention your 4 most recent experiences at max')
+
 })

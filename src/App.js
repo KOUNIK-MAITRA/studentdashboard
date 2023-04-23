@@ -1,9 +1,9 @@
 import './App.css';
-import StudentDashboard from './Components/StudentDashboard';
+import Home from './Pages/Home';
 function App() {
   return (
     <div >
-      <StudentDashboard />
+      <Home />
     </div>
   );
 }
